@@ -82,7 +82,7 @@
                   <h6 class="card-text"><%= dealer.IFSC %></p>
                 <h6 class="card-text"><span class="glyphicon glyphicon-home"></span> <%= dealer.bankName %></p>
                   <button class="btn btn-success btn-sm"><a style="color:white;" href="/addTransaction/<%= dealer._id %>">Add transaction</a></button>
-                  <button class="btn btn-primary btn-sm"><a onclick="vt(event)" data-value="<%= dealer._id %>"  style="color:white;">View transactions</a></button>
+                  <button class="btn btn-primary btn-sm"><a href="/viewDetail/<%= d._id %>"  data-value="<%= dealer._id %>"  style="color:white;">View transactions</a></button>
                 </div>
               </div>
         <% }) %>
