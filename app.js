@@ -89,7 +89,7 @@ app.get("/search",async (req,res) => {
     }
     res.render('search',{dealers:dealers,noMatch:noMatch});
 })
-app.get("/addDealer",authPermission,(req,res) => {
+app.get("/addDealer",(req,res) => {
     res.render("addDealer");
 });
 
@@ -348,15 +348,17 @@ app.get("/allTransactions",async (req,res) => {
     }
 
     var total=0;
-    var season2=0;
-    var season1=0;
+    var season3=0;
     tran.forEach((t) => {
-        total=total+t.monthly
-        if((t._id.year == 2021 && t._id.month > 5) || (t._id.year == 2022 && t._id.month <= 5)){
-            season2=season2 + t.monthly;
-        }else{
-            season1=season1+t.monthly;
+        if(t._id.year==2023){
+            total=total+t.monthly
+            season3=season3 + t.monthly;
         }
+        // if((t._id.year == 2021 && t._id.month > 5) || (t._id.year == 2022 && t._id.month <= 5)){
+        //     season2=season2 + t.monthly;
+        // }else{
+        //     season1=season1+t.monthly;
+        // }
     });
 
     function convert(x){
@@ -370,10 +372,10 @@ app.get("/allTransactions",async (req,res) => {
     }
 
     total=convert(total);
-    season1=convert(season1);
-    season2=convert(season2);
-
-    console.log(total,season1,season2);
+    // season1=convert(season1);
+    // season2=convert(season2);
+    season3=convert(season3);
+    console.log(total,season3);
     
     // console.log("_-----------",r);
     // console.log(tran);
@@ -396,7 +398,7 @@ app.get("/allTransactions",async (req,res) => {
     }
     
     // res.redirect("/");
-    res.render("allTransaction",{t:tran,total:total,month:mnth,s1:season1,s2:season2});
+    res.render("allTransaction",{t:tran,total:total,month:mnth,s3:season3});
 });
 
 app.get("/edit/:dealer_id",async (req,res) => {
