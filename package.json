@@ -21,5 +21,8 @@
   },
   "devDependencies": {
     "workbox-cli": "^6.0.2"
+  },
+  "engines": {
+    "node": ">=16.20.1"
   }
 }
