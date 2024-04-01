@@ -81,8 +81,11 @@ app.get("/",async (req,res) => {
     // }
 });
 app.get("/search",async (req,res) => {
+    console.log('came heree for search ', req.query.search);
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    console.log('regex heree for search ', regex);
     var dealers=await Dealer.find({name:regex}).sort({"name":1}).lean();
+    console.log('dealers heree for search ', dealers);
     var noMatch;
     if(dealers.length < 1){
         noMatch="No dealers found";
